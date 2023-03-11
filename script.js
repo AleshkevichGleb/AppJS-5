@@ -40,26 +40,26 @@
 
 //task4
 {
-    // let ques;
-    // let arr = [];
+    let ques;
+    let arr = [];
 
-    // function getArray(sizeArray){
-    //     for(let i = 0; i < sizeArray; i++){
-    //         ques = prompt("Введите элемент массива");
-    //         arr[i] = ques;
-    //     }
+    function getArray(sizeArray){
+        for(let i = 0; i < sizeArray; i++){
+            ques = prompt("Введите элемент массива");
+            arr[i] = ques;
+        }
 
-    //     return arr;
-    // }
+        return arr;
+    }
 
-    // function showArray(){
-    //     let show = getArray(prompt("Введите длину массива"));
-    //     console.log(show);
-    // }
+    function showArray(){
+        let show = getArray(prompt("Введите длину массива"));
+        console.log(show);
+    }
 
-    // showArray();
+    showArray();
 
-    // console.log("\n");
+    console.log("\n");
 }
 
 
@@ -105,55 +105,55 @@
 
 //task8
 {   
-    // function showTriangle(size){
-    //     let sym = "*";
-    //     let line = [];
-    //     let countSpace = size - 1;
+    function showTriangle(size){
+        let sym = "*";
+        let line = [];
+        let countSpace = size - 1;
 
-    //     for(let i = 1; i <= size; i++){
-    //         let space = " ".repeat(countSpace);
+        for(let i = 1; i <= size; i++){
+            let space = " ".repeat(countSpace);
 
-    //         countSpace--;
+            countSpace--;
 
-    //         line.push(space + sym + space);
+            line.push(space + sym + space);
 
-    //         sym+="**"   
-    //     }
+            sym+="**"   
+        }
 
-    //     for(let i = 0; i < line.length; i++){
-    //         console.log(line[i])
-    //     }
+        for(let i = 0; i < line.length; i++){
+            console.log(line[i])
+        }
 
-    //     console.log("\n");
-    // }
+        console.log("\n");
+    }
     
-    // function showReverseTriangle(size){
-    //     let sym = "*";
-    //     let line = [];
-    //     let countSpace = size - 1;
+    function showReverseTriangle(size){
+        let sym = "*";
+        let line = [];
+        let countSpace = size - 1;
 
-    //     for(let i = 1; i <= size; i++){
-    //         let space = " ".repeat(countSpace);
+        for(let i = 1; i <= size; i++){
+            let space = " ".repeat(countSpace);
 
-    //         countSpace--;
+            countSpace--;
 
-    //         line.push(space + sym + space);
+            line.push(space + sym + space);
 
-    //         sym+="**"   
-    //     }
+            sym+="**"   
+        }
 
-    //     line.reverse();
+        line.reverse();
 
-    //     for(let i = 0; i < line.length; i++){
-    //         console.log(line[i])
-    //     }
-    // }
+        for(let i = 0; i < line.length; i++){
+            console.log(line[i])
+        }
+    }
 
-    // showTriangle(prompt("Введите количество рядов треугольника"));
+    showTriangle(prompt("Введите количество рядов треугольника"));
 
-    // showReverseTriangle(prompt("Введите количество рядов перевернутого треугольника"));
+    showReverseTriangle(prompt("Введите количество рядов перевернутого треугольника"));
 
-    // console.log("\n");
+    console.log("\n");
 }
 
 
@@ -171,7 +171,8 @@
                 break;
             }
         }
-        return `Числа Фибоначи: ${arr}`
+
+        return `Числа Фибоначи: ${arr}`;  
     }
 
     console.log(getFibArr(1000))
@@ -212,13 +213,46 @@
     showElemOfArray([1,2,3,4,5])
 }
 
-
 //task12
 {
-    
+    function getPersonData(name, surname, fathername, group){
+        let array = [];
+        let count = 0;
+        let border = '*';
+        let person = `${name} ${surname} ${fathername}`;
+        
+        array.push("Домашняя работа: «Функции»");
+        array.push("Выполнил: студент гр."+ group);
+        array.push(person);
+
+        for(let elem of array){
+            if(elem.length > count) count = elem.length;
+        }
+
+        for(let i = 0; i < count; i++){
+            border += '*';
+        }
+
+        array.unshift(border); 
+        array.push(border);
+        
+        for(let item of array){
+            if(item.length < count+1){
+                item = item + " ".repeat(count - item.length+1);
+            }
+            console.log("*"+item+"*")
+        }
+    }
+
+   getPersonData(
+        prompt("Your name"),
+        prompt("Your surname"),
+        prompt("Your fathername"),
+        prompt("Your group")
+    )
 }
 
-//task13 не всегда работает не корректно
+//task13
 {
     let rus = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
     let RUS = rus.toUpperCase();
@@ -240,8 +274,7 @@
                 if(EmailArray[i] === rusArray[j] || EmailArray[i] === RUSArray[j]){
 
                     alert("Введите почту правильно");
-                    EmailArray = [];
-                    checkEmail();
+                    return checkEmail();
                     
                 }
             }
@@ -250,15 +283,15 @@
                 if(EmailArray[i] === forbiddenSymbolsInEmail[j]){
 
                     alert("Введите почту правильно");
-                    EmailArray = [];
-                    checkEmail();
-
+                    return checkEmail();
+                    
                 }
             }
-        }
+         }
 
         let sobakaInd = EmailArray.indexOf('@');
         arrayBeforeSobaka = EmailArray.slice(0, sobakaInd)
+
         if(sobakaInd === -1){
             
             alert("Почта не содержит '@'")
@@ -307,8 +340,6 @@
 
             }
         }
-
     }
-
     checkEmail();
 }
